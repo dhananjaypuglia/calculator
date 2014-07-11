@@ -21,27 +21,27 @@ class Calculator
   end
 
   def abs
-    @total.abs
+    @total=@total.abs
   end
 
   def sqr
-    @total**2
+    @total=@total**2
   end
 
   def sqrt
-    Math.sqrt @total
+    @total=Math.sqrt @total
   end
 
   def cube
-    @total**3
+    @total=@total**3
   end
 
   def cubert
-    @total**(1/3.0)
+    @total=@total**(1/3.0)
   end
 
   def neg
-    @total*-1
+    @total=@total*-1
   end
 
   def cancel

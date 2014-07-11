@@ -5,14 +5,21 @@ class InputOutput
   end
 
   def get_input
-    Parser.new(Kernel.gets.chomp).parse
+    @parser=Parser.parse(Kernel.gets.chomp)
   end
 
   def self.calculator_exit
     Kernel.exit
   end
 
-  def result command
-    Router.new(@calculator).map(command)
+  def result
+    Router.new(@calculator, @parser).map
+  end
+
+  def console
+    while 1
+      get_input
+      puts result
+    end
   end
 end

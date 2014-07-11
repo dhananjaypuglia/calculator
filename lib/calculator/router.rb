@@ -1,33 +1,34 @@
 #Its should maps to the specified operations
 class Router
-  def initialize(calculator)
-    @calculator=calculator
+  def initialize(calculator, parser)
+    @calculator = calculator
+    @parser = parser
   end
-  def map command
-    operation, value=[command[0], command[1].to_i]
-    case operation
+
+  def map
+    case @parser.operator
       when "add"
-        total = @calculator.+ value
+        @calculator.+ @parser.operand
       when "subtract"
-        total = @calculator.- value
+        @calculator.- @parser.operand
       when "multiply"
-        total = @calculator.* value
+        @calculator.* @parser.operand
       when "divide"
-        total = @calculator./ value
+        @calculator./ @parser.operand
       when "abs"
-        total = @calculator.abs
+        @calculator.abs
       when "sqr"
-        total = @calculator.sqr
+        @calculator.sqr
       when "sqrt"
-        total = @calculator.sqrt
+        @calculator.sqrt
       when "cube"
-        total = @calculator.cube
+        @calculator.cube
       when "neg"
-        total = @calculator.neg
+        @calculator.neg
       when "cubert"
-        total = @calculator.cubert
+        @calculator.cubert
       when "cancel"
-        total = @calculator.cancel
+        @calculator.cancel
       when "exit"
         InputOutput.calculator_exit
     end
