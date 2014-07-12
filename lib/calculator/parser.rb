@@ -2,9 +2,8 @@
 class Parser
   attr_reader :operator, :operand
 
-  def initialize operator
-    @operator= operator[0]
-    @operand =operator[1].to_i unless operator[1].nil?
+  def initialize (operator =nil, operand=nil)
+    @operator, @operand =operator, operand
   end
 
   def ==(other)
@@ -22,7 +21,9 @@ class Parser
     self == other
   end
 
-  def self.parse operation
-    Parser.new(operation.split(" "))
+  def parse operation
+    @operator, @operand = operation.split
+    @operand =@operand.to_i unless @operand.nil?
+    self
   end
 end

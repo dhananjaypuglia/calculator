@@ -7,5 +7,5 @@ class Application
   def initialize
     io=InputOutput.new
     io.console
-    end
   end
+end

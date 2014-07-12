@@ -5,14 +5,14 @@ describe Calculator do
     calculator = Calculator.new
   end
   let (:io_parser) do
-  io_parser = InputOutput.new
+    io_parser = InputOutput.new
   end
   it 'give 5 if input is add 5' do
-    expect(calculator.+5).to eq(5)
+    expect(calculator.+ 5).to eq(5)
   end
 
   it 'give -5 if input is subtract 5' do
-    expect(calculator.-5).to eq(-5)
+    expect(calculator.- 5).to eq(-5)
   end
 
   it 'give 0 if input is multiply 5' do
@@ -20,11 +20,11 @@ describe Calculator do
   end
 
   it 'give 0 if input is divide 5' do
-    expect(calculator./5).to eq(0)
+    expect(calculator./ 5).to eq(0)
   end
 
   it 'give error if input is divide 0' do
-    lambda {calculator./0}.should raise_error
+    lambda { calculator./ 0 }.should raise_error
   end
 
   it 'give 2 as the absolute value of -2' do

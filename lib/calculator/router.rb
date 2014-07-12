@@ -1,20 +1,24 @@
 #Its should maps to the specified operations
 class Router
-  def initialize(calculator, parser)
-    @calculator = calculator
-    @parser = parser
+  attr_reader :calculator
+  def initialize
+    @calculator = Calculator.new
   end
 
-  def map
-    case @parser.operator
+  def calculator_exit
+    Kernel.exit
+  end
+
+  def map parser
+    case parser.operator
       when "add"
-        @calculator.+ @parser.operand
+        @calculator.+ parser.operand
       when "subtract"
-        @calculator.- @parser.operand
+        @calculator.- parser.operand
       when "multiply"
-        @calculator.* @parser.operand
+        @calculator.* parser.operand
       when "divide"
-        @calculator./ @parser.operand
+        @calculator./ parser.operand
       when "abs"
         @calculator.abs
       when "sqr"
@@ -30,7 +34,9 @@ class Router
       when "cancel"
         @calculator.cancel
       when "exit"
-        InputOutput.calculator_exit
+        calculator_exit
+      else
+        "Incorrect Command"
     end
   end
 end

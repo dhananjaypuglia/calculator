@@ -4,6 +4,7 @@ class Calculator
   def initialize(value=0)
     @total=value
   end
+
   def +(value)
     @total+=value
   end
