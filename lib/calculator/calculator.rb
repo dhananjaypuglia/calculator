@@ -6,43 +6,43 @@ class Calculator
   end
 
   def +(value)
-    @total+=value
+    @total = (@total+value).to_i
   end
 
   def -(value)
-    @total-=value
+    @total = (@total-value).to_i
   end
 
   def *(value)
-    @total*=value
+    @total = (@total*value).to_i
   end
 
   def /(value)
-    @total/=value
+    @total = (@total/value).to_i
   end
 
   def abs
-    @total=@total.abs
+    @total = (@total.abs).to_i
   end
 
   def sqr
-    @total=@total**2
+    @total=(@total**2).to_i
   end
 
   def sqrt
-    @total=Math.sqrt @total
+    @total=(Math.sqrt @total).to_i
   end
 
   def cube
-    @total=@total**3
+    @total=(@total**3).to_i
   end
 
   def cubert
-    @total=@total**(1/3.0)
+    @total=(@total**(1/3.0)).to_i
   end
 
   def neg
-    @total=@total*-1
+    @total = (@total*-1).to_i
   end
 
   def cancel

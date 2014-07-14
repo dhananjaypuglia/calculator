@@ -1,8 +1,8 @@
 #Its should maps to the specified operations
 class Router
   attr_reader :calculator
-  def initialize
-    @calculator = Calculator.new
+  def initialize calculator
+    @calculator = calculator
   end
 
   def calculator_exit

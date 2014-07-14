@@ -5,7 +5,7 @@ require_relative ('calculator/parser.rb')
 require_relative ('calculator/router.rb')
 class Application
   def initialize
-    io=InputOutput.new
+    io=InputOutput.new (Calculator.new)
     io.console
   end
 end

@@ -2,8 +2,8 @@
 class Parser
   attr_reader :operator, :operand
 
-  def initialize (operator =nil, operand=nil)
-    @operator, @operand =operator, operand
+  def initialize (operation)
+   parse operation
   end
 
   def ==(other)
@@ -20,10 +20,10 @@ class Parser
   def eql? other
     self == other
   end
-
+  private
   def parse operation
     @operator, @operand = operation.split
-    @operand =@operand.to_i unless @operand.nil?
+    @operand = @operand.to_i unless @operand.nil?
     self
   end
 end

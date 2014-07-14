@@ -1,16 +1,16 @@
 # It does io operations
 class InputOutput
-  def initialize value=0
-    @router=Router.new
-    @parser = Parser.new
+  def initialize calculator
+    @calculator = calculator
   end
 
   def get_input
-    @parser.parse(Kernel.gets.chomp)
+    Parser.new(Kernel.gets.chomp)
   end
 
   def result
-    @router.map get_input
+    router = Router.new @calculator
+    router.map get_input
   end
 
   def console
