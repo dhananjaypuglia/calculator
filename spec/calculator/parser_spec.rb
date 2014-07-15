@@ -1,43 +1,59 @@
 require 'spec_helper'
 
 describe Parser do
-  # it "should return the parser object " do
-  #   expect(Parser.new.parse("add 5")).to eq(Parser.new("add", 5))
-  # end
-  context "Equality checks" do
-    let(:parser) do
-      parser=Parser.new("add 5")
-    end
-    it "should be equal for same object id" do
-      expect(parser).to eq(parser)
-    end
 
-    it "should not be null" do
-      expect(parser).to_not eq(nil)
-    end
+  let(:calculator) { Calculator.new }
+  let(:history) { History.new }
 
-    it "should not be equal for different type" do
-      object = Object.new
-      expect(parser).to_not eq(object)
-    end
+  it "should return the addcommand object " do
+    expect(Parser.new(calculator, history).parse "add 5").to eq(AddCommand.new(5, calculator, history))
+  end
+  it "should return the subtractcommand object " do
+    expect(Parser.new(calculator, history).parse "subtract 5").to eq(SubtractCommand.new(5, calculator, history))
+  end
+  it "should return the multiplycommand object " do
+    expect(Parser.new(calculator, history).parse "multiply 5").to eq(MultiplyCommand.new(5, calculator, history))
+  end
+  it "should return the dividecommand object " do
+    expect(Parser.new(calculator, history).parse "divide 5").to eq(DivideCommand.new(5, calculator, history))
+  end
 
-    it "should have same hash code" do
-      parser1 = Parser.new("add 5")
-      parser2 = Parser.new("add 5")
-      expect(parser1.hash).to eq(parser2.hash)
-    end
+  it "should return the negcommand object " do
+    expect(Parser.new(calculator, history).parse "neg").to eq(NegCommand.new(calculator, history))
+  end
 
-    it "symmetric property" do
-      parser1 = Parser.new("add 5")
-      parser2 = Parser.new("add 5")
-      expect(parser1).to eq(parser2) and expect(parser2).to eq(parser1)
-    end
+  it "should return the abscommand object " do
+    expect(Parser.new(calculator, history).parse "abs").to eq(AbsCommand.new(calculator, history))
+  end
+  it "should return the sqrcommand object " do
+    expect(Parser.new(calculator, history).parse "sqr").to eq(SqrCommand.new(calculator, history))
+  end
 
-    it "transitive property" do
-      parser1 = Parser.new("add 5")
-      parser2 = Parser.new("add 5")
-      parser3 = Parser.new("add 5")
-      expect(parser1).to eq(parser2) and expect(parser2).to eq(parser3) and expect(parser3).to eq(parser1)
-    end
+  it "should return the sqrtcommand object " do
+    expect(Parser.new(calculator, history).parse "sqrt").to eq(SqrtCommand.new(calculator, history))
+  end
+
+  it "should return the cubecommand object " do
+    expect(Parser.new(calculator, history).parse "cube").to eq(CubeCommand.new(calculator, history))
+  end
+
+  it "should return the cubertcommand object " do
+    expect(Parser.new(calculator, history).parse "cubert").to eq(CubertCommand.new(calculator, history))
+  end
+
+  it "should return the repeatcommand object " do
+    expect(Parser.new(calculator, history).parse "repeat 2").to eq(RepeatCommand.new(2, calculator, history))
+  end
+
+  it "should return the cancelcommand object " do
+    expect(Parser.new(calculator, history).parse "cancel").to eq(CancelCommand.new(calculator, history))
+  end
+
+  it "should return the exitcommand object " do
+    expect(Parser.new(calculator, history).parse "exit").to eq(ExitCommand.new(calculator, history))
+  end
+
+  it "should return the nilcommand object " do
+    expect(Parser.new(calculator, history).parse "random").to eq(NilCommand.new(calculator, history))
   end
 end

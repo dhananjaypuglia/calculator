@@ -1,15 +1,11 @@
 require 'spec_helper'
 
 describe InputOutput do
-  let(:calcutator) {Calculator.new}
+  let(:calculator) {Calculator.new}
+  let(:history) {History.new}
   let(:input_output) do
-    input_output = InputOutput.new(calcutator)
+    input_output = InputOutput.new(calculator,history)
   end
-  it 'should parse the input' do
-    allow(Kernel).to receive(:gets).and_return("add 5")
-    expect(input_output.get_input).to eq(Parser.new("add 5"))
-  end
-
 
   it 'give 5 as result if input is add 5' do
     allow(Kernel).to receive(:gets).and_return("add 5")

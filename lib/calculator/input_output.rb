@@ -1,20 +1,22 @@
 # It does io operations
 class InputOutput
-  def initialize calculator
+  def initialize calculator , history
     @calculator = calculator
+    @history = history
   end
 
   def get_input
-    Parser.new(Kernel.gets.chomp)
+   @command = Parser.new(@calculator,@history).parse Kernel.gets
+
   end
 
   def result
-    router = Router.new @calculator
-    router.map get_input
+   @command.execute
   end
 
   def console
-    while 1
+    while true
+      get_input
       puts result
     end
   end

@@ -1,8 +1,7 @@
-#do the calculation in add,subtract,multiply,divide
+#Performs the calculation operation
 class Calculator
-
   def initialize(value=0)
-    @total=value
+    @total = value
   end
 
   def +(value)
